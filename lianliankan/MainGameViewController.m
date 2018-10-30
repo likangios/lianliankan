@@ -16,17 +16,31 @@
 @property(nonatomic,strong) UIButton *backButton;
 
 @property(nonatomic,strong) UIView *containView;
+@property(nonatomic,strong) UIImageView *bgImageView;
 
+@property(nonatomic,strong) NSMutableArray *selectModel;
+
+@property(nonatomic,assign) NSInteger selectedCount;
 @end
 
 @implementation MainGameViewController
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+- (UIImageView *)bgImageView{
+    if(!_bgImageView) {
+        _bgImageView = [UIImageView new];
+        _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _bgImageView.clipsToBounds = YES;
+        _bgImageView.image = [UIImage imageNamed:@"home_bg"];
+        
+    }
+    return _bgImageView;
+}
 -(UIView *)containView{
     if (!_containView) {
         _containView = [UIView new];
-        _containView.backgroundColor = [UIColor randomColor];
+        _containView.backgroundColor = [UIColor clearColor];
     }
     return _containView;
 }
@@ -42,11 +56,17 @@
     }
     return _backButton;
 }
+
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.view addSubview:self.bgImageView];
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     
     [self.view addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,40 +83,15 @@
     [self initGameMap];
     
 }
-- (UIImage *)getRandomImage{
-    NSInteger type = arc4random()%4;
-    NSInteger number = arc4random()%13 + 1;
-    NSString *name;
-    switch (type) {
-        case 0:
-            name = [NSString stringWithFormat:@"a%ld.jpg",number];
-            break;
-        case 1:
-            name = [NSString stringWithFormat:@"b%ld.jpg",number];
-            break;
-        case 2:
-            name = [NSString stringWithFormat:@"a%ld.jpg",number];
-            break;
-        case 3:
-            name = [NSString stringWithFormat:@"b%ld.jpg",number];
-            break;
-            
-        default:
-            break;
-    }
-    return [UIImage imageNamed:name];
-}
 - (void)initGameMap{
     NSInteger count = [self getMapCount];
 
     CGSize buttonSize = CGSizeMake(CGRectGetWidth(self.containView.frame)/(count - 1), CGRectGetWidth(self.containView.frame)/(count - 1)*153/110);
     for (int i= 0; i< count; i++) {
         for (int j= 0; j< count; j++) {
-            
             ItemButton *item = [ItemButton buttonWithType:UIButtonTypeCustom];
-            item.backgroundColor = [UIColor randomColor];
             PKModel *model = self.gameData[i*count+j];
-            model.index = (i << 8)|j;
+            item.model = model;
             item.layer.borderColor = [UIColor blackColor].CGColor;
             item.layer.borderWidth = 1.0;
             [self.containView addSubview:item];
@@ -144,6 +139,29 @@
         [array addObject:[self getRandomModelWithType:type Number:number]];
         [array addObject:[self getRandomModelWithType:type Number:number]];
         count --;
+    }
+    [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if (arc4random()%2) {
+            return obj1 < obj2;
+        }
+        else{
+         return obj1 > obj2;
+        }
+    }];
+    NSInteger itemCount = [self getMapCount];
+    for (int i= 0; i< itemCount; i++) {
+        for (int j= 0; j< itemCount; j++) {
+            PKModel *model;
+            if (i == 0 || i == itemCount - 1 || j == 0 || j == itemCount - 1) {
+                model = [self getRandomModelWithType:type_none Number:0];
+            }
+            else{
+                model = array.firstObject;
+                [array removeObjectAtIndex:0];
+            }
+            model.index = (i << 8)|j;
+            [self.gameData addObject:model];
+        }
     }
     NSLog(@"gameData:%@",self.gameData);
 }
