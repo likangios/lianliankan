@@ -27,7 +27,7 @@ typedef enum : NSUInteger {
 //位置坐标
 @property(nonatomic,assign) NSInteger index;
 
-@property(nonatomic,assign) NSInteger x;
+@property(nonatomic,assign) int x;
 
-@property(nonatomic,assign) NSInteger y;
+@property(nonatomic,assign) int y;
 @end

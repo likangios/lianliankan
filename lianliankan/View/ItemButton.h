@@ -12,4 +12,5 @@
 
 @property(nonatomic,strong) PKModel *model;
 
+- (void)update;
 @end

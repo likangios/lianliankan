@@ -10,11 +10,11 @@
 
 @implementation PKModel
 
-- (NSInteger)x{
+- (int)x{
     int button_x = (self.index >> 8 & 0xF);
     return button_x;
 }
--(NSInteger)y{
+-(int)y{
     int button_y = (self.index & 0x0f);
     return button_y;
 }

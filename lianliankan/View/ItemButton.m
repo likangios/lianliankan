@@ -17,6 +17,9 @@
     // Drawing code
 }
 */
+- (void)update{
+    self.model = _model;
+}
 - (void)setModel:(PKModel *)model{
     _model = model;
     NSString *name;
