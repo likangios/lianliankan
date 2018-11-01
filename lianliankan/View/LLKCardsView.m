@@ -43,6 +43,10 @@
     }
     return _collectionView;
 }
+- (void)setCurrentIndex:(NSInteger)currentIndex{
+    _currentIndex = currentIndex;
+    [self.collectionView reloadData];
+}
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -59,15 +63,20 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     LLKCardsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LLKCardsCell" forIndexPath:indexPath];
     cell.guankaLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
-    cell.isLock = NO;
-    if (indexPath.row == 0) {
+    cell.isLock = YES;
+    if (indexPath.row < self.currentIndex) {
         cell.isLock = NO;
     }
     return  cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.cellSelected) {
-        [self.cellSelected sendNext:@(indexPath.row)];
+    if (indexPath.row < self.currentIndex) {
+        if (self.cellSelected) {
+            [self.cellSelected sendNext:@(indexPath.row)];
+        }
+    }
+    else{
+        [SVProgressHUD showInfoWithStatus:@"先解锁前面关卡"];
     }
 }
 

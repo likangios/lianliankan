@@ -19,6 +19,8 @@
 
 @property(nonatomic,strong) UIButton *backButton;
 
+@property(nonatomic,strong) LLKCardsView *cardView;
+
 
 @end
 
@@ -63,6 +65,20 @@
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.cardView.currentIndex = [self getCurrentIndex];
+}
+- (NSInteger)getCurrentIndex{
+    NSUserDefaults *defau = [NSUserDefaults standardUserDefaults];
+    NSString *level = [NSString stringWithFormat:@"%d",self.gameLevel];
+    NSNumber *index = [defau objectForKey:level];
+    if (index == nil) {
+        [defau setObject:@(1) forKey:level];
+        return 1;
+    }
+    return index.integerValue;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -87,6 +103,7 @@
     }];
     for (int i = 0; i< 1; i++) {
         LLKCardsView *view = [[LLKCardsView alloc]init];
+        view.currentIndex = 1;
         [self.scrollView addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(kSCREEN_WIDTH * i);
@@ -102,8 +119,9 @@
             @strongify(self);
             [self pushToMainGameVc:index];
         }];
-    
+        self.cardView = view;
     }
+    self.cardView.currentIndex = [self getCurrentIndex];
 }
 - (void)pushToMainGameVc:(NSNumber *)index{
     MainGameViewController *main = [[MainGameViewController alloc]init];

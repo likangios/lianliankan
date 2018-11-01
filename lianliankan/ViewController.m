@@ -31,7 +31,7 @@
     if(!_zimuIconImageView) {
         _zimuIconImageView = [UIImageView new];
         _zimuIconImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _zimuIconImageView.image = [UIImage imageNamed:@"klotski"];
+        _zimuIconImageView.image = [UIImage imageNamed:@"logo_76x82_"];
         
     }
     return _zimuIconImageView;
@@ -40,7 +40,7 @@
     if(!_topIconImageView) {
         _topIconImageView = [UIImageView new];
         _topIconImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _topIconImageView.image = [UIImage imageNamed:@"logo_76x82_"];
+        _topIconImageView.image = [UIImage imageNamed:@""];
 
     }
     return _topIconImageView;
@@ -68,8 +68,8 @@
         make.edges.equalTo(self.view);
     }];
     [self.topIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(50);
-        make.size.mas_equalTo(CGSizeMake(76, 82));
+        make.top.mas_equalTo(10);
+        make.size.mas_equalTo(CGSizeMake(0, 0));
         make.centerX.equalTo(self.view);
     }];
     [self.zimuIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,10 +91,11 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [scrollView addSubview:btn];
         btn.tag = i + 1;
-        [btn setImage:[UIImage imageNamed:@"icon_rectangle"] forState:UIControlStateNormal];
+        UIImage *image = [UIImage imageNamed:@"icon_rectangle"];
+        [btn setImage:image forState:UIControlStateNormal];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.view);
-            make.size.mas_equalTo(CGSizeMake(kAUTOSCALE_WIDTH(350*0.8), 85*0.8));
+            make.size.mas_equalTo(CGSizeMake(300, 75));
             if (lastBtn) {
                 make.top.equalTo(lastBtn.mas_bottom).offset(20);
             }
@@ -104,13 +105,13 @@
         }];
         UILabel *label = [UILabel new];
         label.text = titles[i];
-        label.textColor = [[UIColor orangeColor] colorWithAlphaComponent:0.6];
+        label.textColor = [[UIColor blackColor] colorWithAlphaComponent:1];
         label.font = [UIFont boldSystemFontOfSize:30];
         label.textAlignment = NSTextAlignmentCenter;
         [btn addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(btn);
-            make.centerY.equalTo(btn.mas_centerY).offset(3);
+            make.centerY.equalTo(btn.mas_centerY).offset(0);
         }];
         lastBtn = btn;
         @weakify(self);

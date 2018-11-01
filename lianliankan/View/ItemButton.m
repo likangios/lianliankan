@@ -25,7 +25,7 @@
     NSString *name;
     switch (model.type) {
         case type_none:
-            name = @"cardBackground";
+            name = @"cardBackground1";
             break;
         case type_hei:
             name = [NSString stringWithFormat:@"d%ld.jpg",_model.number];

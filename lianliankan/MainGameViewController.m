@@ -13,7 +13,12 @@
 @interface MainGameViewController ()
 
 @property(nonatomic,strong) NSMutableArray *gameData;
+
 @property(nonatomic,strong) UIButton *backButton;
+
+@property(nonatomic,strong) UIButton *refreshButton;
+
+
 
 @property(nonatomic,strong) UIView *containView;
 @property(nonatomic,strong) UIImageView *bgImageView;
@@ -23,10 +28,71 @@
 @property(nonatomic,strong) NSMutableArray *selectButton;
 
 @property(nonatomic,assign) NSInteger selectedCount;
+
+@property(nonatomic,strong) UIProgressView *progressView;
+
+@property(nonatomic,assign) NSInteger hasRemoveCount;
+
 @end
 
 @implementation MainGameViewController
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self YDD_cancelTimer];
+}
+dispatch_source_t timer;
+- (void)YDD_cancelTimer{
+    if (timer) {
+        dispatch_source_cancel(timer);
+        timer = nil;
+    }
+}
+- (void)YDD_resumeTimer{
+    [self YDD_cancelTimer];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(timer,DISPATCH_TIME_NOW,0.1*NSEC_PER_SEC, 0); //每0.1秒执行
+    dispatch_source_set_event_handler(timer, ^{
+        [self updateTime];
+    });
+    dispatch_resume(timer);
+}
+- (void)updateTime{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.progressView.progress -= 0.0005;
+        NSLog(@"self.progressView.progress:%f",self.progressView.progress);
+        if (self.progressView.progress <= 0.0) {
+            [self YDD_cancelTimer];
+
+            UIAlertController *alert= [UIAlertController alertControllerWithTitle:@"Game Over" message:@"时间到了！" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *back = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            UIAlertAction *next = [UIAlertAction actionWithTitle:@"再来一把" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                self.hasRemoveCount = 0;
+                self.progressView.progress = 1.0;
+                [self YDD_resumeTimer];
+                [self initGameMap];
+                [self initGameData];
+                [self updateItemButtonModel];
+            }];
+            [alert addAction:back];
+            [alert addAction:next];
+            [self presentViewController:alert animated:YES completion:NULL];
+        }
+    });
+}
+- (UIProgressView *)progressView{
+    if (!_progressView) {
+        _progressView = [[UIProgressView alloc]init];
+        _progressView.progressTintColor = [UIColor greenColor];
+        _progressView.progress = 1.0;
+        _progressView.layer.cornerRadius = 2.5;
+        _progressView.layer.masksToBounds = YES;
+    }
+    return _progressView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.allItemButton = [NSMutableArray array];
@@ -56,8 +122,26 @@
         make.top.mas_equalTo(25);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
+    
+    [self.view addSubview:self.refreshButton];
+    [self.refreshButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-25);
+        make.top.mas_equalTo(25);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+    }];
+    
+    [self.view addSubview:self.progressView];
+    [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.left.mas_equalTo(60);
+        make.height.mas_equalTo(5);
+        make.top.mas_equalTo(10);
+    }];
+    [self YDD_resumeTimer];
+    
+    @weakify(self);
     [RACObserve(self, selectedCount) subscribeNext:^(NSNumber * x) {
-//        NSLog(@"x is %ld",x.integerValue);
+        @strongify(self);
         if (x.integerValue == 2) {
             ItemButton *firstItem = self.selectButton[0];
             ItemButton *secondItem = self.selectButton[1];
@@ -77,6 +161,7 @@
                     secondItem.model.type = type_none;
                     [firstItem  update];
                     [secondItem  update];
+                    self.hasRemoveCount ++;
                 }
                 else if ([self getSameIndexXItemWithArr:vArr Array:vArr2]) {
                     NSLog(@"找到 共同 行 可以 消");
@@ -84,6 +169,7 @@
                     secondItem.model.type = type_none;
                     [firstItem  update];
                     [secondItem  update];
+                    self.hasRemoveCount ++;
                 }
                 else{
                     NSLog(@"不可以 消");
@@ -96,7 +182,37 @@
             [self.selectButton removeAllObjects];
         }
     }];
-     
+    [RACObserve(self, hasRemoveCount) subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        NSInteger count = pow([self getMapCount]-2, 2)/2.0;
+        if (x.integerValue == count) {
+            self.index ++;
+            // 同步关卡
+            NSUserDefaults *defau = [NSUserDefaults standardUserDefaults];
+            NSString *level = [NSString stringWithFormat:@"%d",self.gameLevel];
+            [defau setObject:@(self.index + 1) forKey:level];
+            [defau synchronize];
+            
+            UIAlertController *alert= [UIAlertController alertControllerWithTitle:@"恭喜过关" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *back = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            UIAlertAction *next = [UIAlertAction actionWithTitle:@"下一关" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                self.hasRemoveCount = 0;
+                self.progressView.progress = 1.0;
+                [self YDD_resumeTimer];
+                [self initGameMap];
+                [self initGameData];
+                [self updateItemButtonModel];
+            }];
+            [alert addAction:back];
+            if (self.index < 12) {
+                [alert addAction:next];
+            }
+            [self presentViewController:alert animated:YES completion:NULL];
+        }
+        
+    }];
 }
 - (ItemButton *)getItemButtonWithPoint_x:(int)x  Point_y:(int)y{
     NSInteger  tag = (x << 8)|y;
@@ -231,6 +347,11 @@
     
 }
 - (void)initGameMap{
+    self.allItemButton = [NSMutableArray array];
+    self.selectButton = [NSMutableArray array];
+    for (ItemButton * item in self.containView.subviews) {
+        [item removeFromSuperview];
+    }
     NSInteger count = [self getMapCount];
     CGSize buttonSize = CGSizeMake(CGRectGetWidth(self.containView.frame)/(count - 1), CGRectGetWidth(self.containView.frame)/(count - 1)*153/110);
     for (int i= 0; i< count; i++) {
@@ -246,7 +367,9 @@
             else{
                 item.frame = CGRectMake(MAX(j*buttonSize.width - buttonSize.width/2.0, 0), i*buttonSize.height, buttonSize.width, buttonSize.height);
             }
+            @weakify(self);
             [[item rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+                @strongify(self);
                 [self itemClickAction:x];
             }];
             [self.allItemButton addObject:item];
@@ -289,6 +412,7 @@
 }
 - (void)initGameData{
     self.gameData = [NSMutableArray array];
+    
     NSMutableArray *array = [NSMutableArray array];
     NSInteger count = pow([self getMapCount]-2, 2)/2.0;
     while (count) {
@@ -362,6 +486,43 @@
         }];
     }
     return _backButton;
+}
+- (UIButton *)refreshButton{
+    if (!_refreshButton) {
+        _refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_refreshButton setImage:[UIImage imageNamed:@"shuaxin"] forState:UIControlStateNormal];
+        @weakify(self);
+        [[_refreshButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+            @strongify(self);
+            [self refreshAction];
+        }];
+    }
+    return _refreshButton;
+}
+- (void)refreshAction{
+    
+    NSMutableArray *types = [NSMutableArray array];
+    NSMutableArray *numbers = [NSMutableArray array];
+    NSMutableArray *buttonsArray = [NSMutableArray array];
+    [self.allItemButton enumerateObjectsUsingBlock:^(ItemButton *button, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (button.model.type != type_none) {
+            [buttonsArray addObject:button];
+            [types addObject:@(button.model.type)];
+            [numbers addObject:@(button.model.number)];
+        }
+    }];
+    [buttonsArray enumerateObjectsUsingBlock:^(ItemButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        PKModel *model = obj.model;
+        NSInteger  index = arc4random()%types.count;
+        NSNumber *type = types[index];
+        NSNumber *numb = numbers[index];
+        model.type = type.integerValue;
+        model.number = numb.integerValue;
+        obj.model = model;
+        [types removeObjectAtIndex:index];
+        [numbers removeObjectAtIndex:index];
+    }];
+    NSLog(@"sdfgdsfdsc");
 }
 
 - (void)backAction{

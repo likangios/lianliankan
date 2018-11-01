@@ -12,4 +12,6 @@
 
 @property(nonatomic,strong) RACSubject *cellSelected;
 
+@property(nonatomic,assign) NSInteger currentIndex;
+
 @end
