@@ -10,7 +10,9 @@
 #import "PKModel.h"
 #import "ItemButton.h"
 
-@interface MainGameViewController ()
+static  CFTimeInterval animalTime = 0.2;
+
+@interface MainGameViewController ()<CAAnimationDelegate>
 
 @property(nonatomic,strong) NSMutableArray *gameData;
 
@@ -33,10 +35,27 @@
 
 @property(nonatomic,assign) NSInteger hasRemoveCount;
 
+@property(nonatomic,strong) UIImageView *starImageView;
+
 @end
 
 @implementation MainGameViewController
-
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    self.starImageView.hidden = YES;
+}
+- (void)animationDidStart:(CAAnimation *)anim{
+    self.starImageView.hidden = NO;
+}
+- (UIImageView *)starImageView{
+    if(!_starImageView) {
+        _starImageView = [UIImageView new];
+        _starImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _starImageView.image = [UIImage imageNamed:@"star"];
+        _starImageView.hidden = YES;
+        
+    }
+    return _starImageView;
+}
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self YDD_cancelTimer];
@@ -116,6 +135,12 @@ dispatch_source_t timer;
     [self initGameData];
     [self initGameMap];
     [self updateItemButtonModel];
+    [self.containView addSubview:self.starImageView];
+    [self.starImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(100);
+        make.center.equalTo(self.view);
+    }];
+    
     [self.view addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(25);
@@ -154,21 +179,44 @@ dispatch_source_t timer;
                 NSArray *vArr = [self getEmptyItemVerticalWithCurrentItem:firstItem];
                 NSArray *vArr2 = [self getEmptyItemVerticalWithCurrentItem:secondItem];
                 
+                NSArray *guaijiaodian1 = [self getSameIndexYItemWithArr:hArr Array:hArr2];
+                NSArray *guaijiaodian2 = [self getSameIndexXItemWithArr:vArr Array:vArr2];
 
-                if ([self getSameIndexYItemWithArr:hArr Array:hArr2]) {
+                if (guaijiaodian1 && guaijiaodian1.count) {
+                    NSMutableArray *animalsItems = [NSMutableArray arrayWithArray:guaijiaodian1];
+                    if (![animalsItems containsObject:firstItem]) {
+                        [animalsItems insertObject:firstItem atIndex:0];
+                    }
+                    if (![animalsItems containsObject:secondItem]) {
+                        [animalsItems addObject:secondItem];
+                    }
+                    [self beginAnimations:animalsItems];
                     NSLog(@"找到 共同 列 可以 消");
                     firstItem.model.type = type_none;
                     secondItem.model.type = type_none;
-                    [firstItem  update];
-                    [secondItem  update];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(animalsItems.count * animalTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [firstItem  update];
+                        [secondItem  update];
+                    });
                     self.hasRemoveCount ++;
                 }
-                else if ([self getSameIndexXItemWithArr:vArr Array:vArr2]) {
+                else if (guaijiaodian2 && guaijiaodian2.count) {
                     NSLog(@"找到 共同 行 可以 消");
+                    NSMutableArray *animalsItems = [NSMutableArray arrayWithArray:guaijiaodian2];
+                    if (![animalsItems containsObject:firstItem]) {
+                        [animalsItems insertObject:firstItem atIndex:0];
+                    }
+                    if (![animalsItems containsObject:secondItem]) {
+                        [animalsItems addObject:secondItem];
+                    }
+                    [self beginAnimations:animalsItems];
+
                     firstItem.model.type = type_none;
                     secondItem.model.type = type_none;
-                    [firstItem  update];
-                    [secondItem  update];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(animalsItems.count * animalTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [firstItem  update];
+                        [secondItem  update];
+                    });
                     self.hasRemoveCount ++;
                 }
                 else{
@@ -219,6 +267,42 @@ dispatch_source_t timer;
     ItemButton *item = [self.containView  viewWithTag:tag];
     return item;
 }
+- (void)beginAnimations:(NSMutableArray *)items{
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    ItemButton *button = items.firstObject;
+    NSMutableArray *groupAnimation = [NSMutableArray array];
+    self.starImageView.center = button.center;
+    for (int i = 1; i<items.count; i++) {
+        ItemButton *button = items[i];
+        CABasicAnimation *Ani = [self movepoint:button.center duration:animalTime];
+        Ani.beginTime = animalTime * (i-1);
+        [groupAnimation addObject:Ani];
+    }
+    group.animations =groupAnimation;
+    group.duration = (items.count - 1) * animalTime;
+    group.delegate = self;
+    group.removedOnCompletion = NO;
+    group.autoreverses = NO;
+    group.fillMode=kCAFillModeForwards;
+    [self.starImageView.layer addAnimation:group forKey:@"move"];
+}
+
+-(CABasicAnimation *)movepoint:(CGPoint)point duration:(CFTimeInterval)duration //点移动
+{
+//    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.translation"];
+    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"position"];
+    
+    animation.toValue=[NSValue valueWithCGPoint:point];
+    
+    animation.removedOnCompletion=NO;
+    
+    animation.duration = duration;
+    
+    animation.fillMode=kCAFillModeForwards;
+    
+    return animation;
+    
+}
 //查找 两行 直接  共同列
 -(NSArray *)getSameIndexYItemWithArr:(NSArray *)arr1 Array:(NSArray *)arr2{
     ItemButton *beginItem = nil;
@@ -239,17 +323,20 @@ dispatch_source_t timer;
                 if (array.count == 0 || allEmpty) {
                     beginItem = fItem;
                     endItem = sItem;
-                    break;
+                    goto b;
                 }
             }
         }
     }
+b:{
     if (beginItem && endItem) {
         return @[beginItem,endItem];
     }
     else{
         return nil;
     }
+}
+    return nil;
 }
 //查找 两列 直接 共同行
 -(NSArray *)getSameIndexXItemWithArr:(NSArray *)arr1 Array:(NSArray *)arr2{
@@ -271,17 +358,20 @@ dispatch_source_t timer;
                 if (array.count == 0 || allEmpty) {
                     beginItem = fItem;
                     endItem = sItem;
-                    break;
+                    goto b;
                 }
             }
         }
     }
+    
+    b:{
     if (beginItem && endItem) {
         return @[beginItem,endItem];
     }
-    else{
         return nil;
     }
+    return nil;
+
 }
 
 //垂直方向查找空格子
