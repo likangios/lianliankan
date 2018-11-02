@@ -15,9 +15,6 @@
 		79B778D82187EDE7003E01B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778D72187EDE7003E01B3 /* main.m */; };
 		79B778E02187F17E003E01B3 /* DiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778DF2187F17E003E01B3 /* DiffViewController.m */; };
 		79B778E32187F193003E01B3 /* MainGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778E22187F193003E01B3 /* MainGameViewController.m */; };
-		79B778EE2187F4FE003E01B3 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778E62187F4FE003E01B3 /* TestViewController.m */; };
-		79B778EF2187F4FE003E01B3 /* HRDControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778E82187F4FE003E01B3 /* HRDControlView.m */; };
-		79B778F02187F4FE003E01B3 /* HRDCTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778E92187F4FE003E01B3 /* HRDCTManager.m */; };
 		79B778F12187F4FE003E01B3 /* HRDUserTKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778EB2187F4FE003E01B3 /* HRDUserTKViewController.m */; };
 		79B778F42187FBED003E01B3 /* LLKCardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778F32187FBED003E01B3 /* LLKCardsView.m */; };
 		79B778F82187FD21003E01B3 /* LLKCardsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778F72187FD21003E01B3 /* LLKCardsCell.m */; };
@@ -25,6 +22,17 @@
 		79B778FF218808FC003E01B3 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778FE218808FC003E01B3 /* UIColor+expanded.m */; };
 		79B7790421883099003E01B3 /* PKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7790321883099003E01B3 /* PKModel.m */; };
 		79B7790721884BC6003E01B3 /* ItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7790621884BC6003E01B3 /* ItemButton.m */; };
+		79E198DD218C218600658BE2 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198DC218C218600658BE2 /* libGDTMobSDK.a */; };
+		79E198DF218C21A900658BE2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198DE218C21A900658BE2 /* libxml2.tbd */; };
+		79E198E1218C21AF00658BE2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198E0218C21AF00658BE2 /* AVFoundation.framework */; };
+		79E198E3218C21B500658BE2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198E2218C21B500658BE2 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		79E198E5218C21BE00658BE2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198E4218C21BD00658BE2 /* Security.framework */; };
+		79E198E7218C21C300658BE2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198E6218C21C300658BE2 /* libz.tbd */; };
+		79E198E9218C21C900658BE2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198E8218C21C800658BE2 /* CoreTelephony.framework */; };
+		79E198EB218C21CE00658BE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198EA218C21CD00658BE2 /* SystemConfiguration.framework */; };
+		79E198ED218C21D300658BE2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198EC218C21D300658BE2 /* CoreLocation.framework */; };
+		79E198EF218C21D900658BE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198EE218C21D900658BE2 /* QuartzCore.framework */; };
+		79E198F1218C21DE00658BE2 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198F0218C21DE00658BE2 /* AdSupport.framework */; };
 		8076EEC2ADD76F5EF8E270D1 /* libPods-lianliankan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4546909B657C269650B668E /* libPods-lianliankan.a */; };
 /* End PBXBuildFile section */
 
@@ -46,14 +54,8 @@
 		79B778E12187F193003E01B3 /* MainGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainGameViewController.h; sourceTree = "<group>"; };
 		79B778E22187F193003E01B3 /* MainGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainGameViewController.m; sourceTree = "<group>"; };
 		79B778E42187F3FB003E01B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		79B778E62187F4FE003E01B3 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		79B778E72187F4FE003E01B3 /* HRDUserTKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDUserTKViewController.h; sourceTree = "<group>"; };
-		79B778E82187F4FE003E01B3 /* HRDControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDControlView.m; sourceTree = "<group>"; };
-		79B778E92187F4FE003E01B3 /* HRDCTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDCTManager.m; sourceTree = "<group>"; };
-		79B778EA2187F4FE003E01B3 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		79B778EB2187F4FE003E01B3 /* HRDUserTKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDUserTKViewController.m; sourceTree = "<group>"; };
-		79B778EC2187F4FE003E01B3 /* HRDCTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDCTManager.h; sourceTree = "<group>"; };
-		79B778ED2187F4FE003E01B3 /* HRDControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDControlView.h; sourceTree = "<group>"; };
 		79B778F22187FBED003E01B3 /* LLKCardsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLKCardsView.h; sourceTree = "<group>"; };
 		79B778F32187FBED003E01B3 /* LLKCardsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLKCardsView.m; sourceTree = "<group>"; };
 		79B778F62187FD21003E01B3 /* LLKCardsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLKCardsCell.h; sourceTree = "<group>"; };
@@ -66,6 +68,25 @@
 		79B7790321883099003E01B3 /* PKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKModel.m; sourceTree = "<group>"; };
 		79B7790521884BC6003E01B3 /* ItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemButton.h; sourceTree = "<group>"; };
 		79B7790621884BC6003E01B3 /* ItemButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemButton.m; sourceTree = "<group>"; };
+		79E198D4218C218600658BE2 /* GDTNativeExpressAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdView.h; sourceTree = "<group>"; };
+		79E198D5218C218600658BE2 /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = "<group>"; };
+		79E198D6218C218600658BE2 /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = "<group>"; };
+		79E198D7218C218600658BE2 /* GDTSDKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKConfig.h; sourceTree = "<group>"; };
+		79E198D8218C218600658BE2 /* GDTMobInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobInterstitial.h; sourceTree = "<group>"; };
+		79E198D9218C218600658BE2 /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = "<group>"; };
+		79E198DA218C218600658BE2 /* GDTNativeExpressAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAd.h; sourceTree = "<group>"; };
+		79E198DB218C218600658BE2 /* GDTSDKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKDefines.h; sourceTree = "<group>"; };
+		79E198DC218C218600658BE2 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
+		79E198DE218C21A900658BE2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		79E198E0218C21AF00658BE2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		79E198E2218C21B500658BE2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		79E198E4218C21BD00658BE2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		79E198E6218C21C300658BE2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		79E198E8218C21C800658BE2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		79E198EA218C21CD00658BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		79E198EC218C21D300658BE2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		79E198EE218C21D900658BE2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		79E198F0218C21DE00658BE2 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C4546909B657C269650B668E /* libPods-lianliankan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lianliankan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,7 +95,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79E198F1218C21DE00658BE2 /* AdSupport.framework in Frameworks */,
+				79E198EF218C21D900658BE2 /* QuartzCore.framework in Frameworks */,
+				79E198ED218C21D300658BE2 /* CoreLocation.framework in Frameworks */,
+				79E198EB218C21CE00658BE2 /* SystemConfiguration.framework in Frameworks */,
+				79E198E9218C21C900658BE2 /* CoreTelephony.framework in Frameworks */,
+				79E198E7218C21C300658BE2 /* libz.tbd in Frameworks */,
+				79E198E5218C21BE00658BE2 /* Security.framework in Frameworks */,
+				79E198E3218C21B500658BE2 /* WebKit.framework in Frameworks */,
+				79E198E1218C21AF00658BE2 /* AVFoundation.framework in Frameworks */,
+				79E198DF218C21A900658BE2 /* libxml2.tbd in Frameworks */,
 				8076EEC2ADD76F5EF8E270D1 /* libPods-lianliankan.a in Frameworks */,
+				79E198DD218C218600658BE2 /* libGDTMobSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +134,7 @@
 		79B778C72187EDE5003E01B3 /* lianliankan */ = {
 			isa = PBXGroup;
 			children = (
+				79E198D3218C218600658BE2 /* lib */,
 				79B779012188308A003E01B3 /* Model */,
 				79B779002188307A003E01B3 /* Catergry */,
 				79B778F92188073E003E01B3 /* GQGesVCTransition */,
@@ -128,12 +161,6 @@
 		79B778E52187F4FE003E01B3 /* web */ = {
 			isa = PBXGroup;
 			children = (
-				79B778EA2187F4FE003E01B3 /* TestViewController.h */,
-				79B778E62187F4FE003E01B3 /* TestViewController.m */,
-				79B778ED2187F4FE003E01B3 /* HRDControlView.h */,
-				79B778E82187F4FE003E01B3 /* HRDControlView.m */,
-				79B778EC2187F4FE003E01B3 /* HRDCTManager.h */,
-				79B778E92187F4FE003E01B3 /* HRDCTManager.m */,
 				79B778E72187F4FE003E01B3 /* HRDUserTKViewController.h */,
 				79B778EB2187F4FE003E01B3 /* HRDUserTKViewController.m */,
 			);
@@ -180,6 +207,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		79E198D3218C218600658BE2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				79E198D4218C218600658BE2 /* GDTNativeExpressAdView.h */,
+				79E198D5218C218600658BE2 /* GDTMobBannerView.h */,
+				79E198D6218C218600658BE2 /* GDTNativeAd.h */,
+				79E198D7218C218600658BE2 /* GDTSDKConfig.h */,
+				79E198D8218C218600658BE2 /* GDTMobInterstitial.h */,
+				79E198D9218C218600658BE2 /* GDTSplashAd.h */,
+				79E198DA218C218600658BE2 /* GDTNativeExpressAd.h */,
+				79E198DB218C218600658BE2 /* GDTSDKDefines.h */,
+				79E198DC218C218600658BE2 /* libGDTMobSDK.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		7BB5A1057952254FD92BB2F0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +235,16 @@
 		ED582D02A5FA714908949DB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79E198F0218C21DE00658BE2 /* AdSupport.framework */,
+				79E198EE218C21D900658BE2 /* QuartzCore.framework */,
+				79E198EC218C21D300658BE2 /* CoreLocation.framework */,
+				79E198EA218C21CD00658BE2 /* SystemConfiguration.framework */,
+				79E198E8218C21C800658BE2 /* CoreTelephony.framework */,
+				79E198E6218C21C300658BE2 /* libz.tbd */,
+				79E198E4218C21BD00658BE2 /* Security.framework */,
+				79E198E2218C21B500658BE2 /* WebKit.framework */,
+				79E198E0218C21AF00658BE2 /* AVFoundation.framework */,
+				79E198DE218C21A900658BE2 /* libxml2.tbd */,
 				C4546909B657C269650B668E /* libPods-lianliankan.a */,
 			);
 			name = Frameworks;
@@ -290,12 +343,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-lianliankan/Pods-lianliankan-resources.sh",
-				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,10 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79B778EE2187F4FE003E01B3 /* TestViewController.m in Sources */,
-				79B778F02187F4FE003E01B3 /* HRDCTManager.m in Sources */,
 				79B778F42187FBED003E01B3 /* LLKCardsView.m in Sources */,
-				79B778EF2187F4FE003E01B3 /* HRDControlView.m in Sources */,
 				79B778CD2187EDE5003E01B3 /* ViewController.m in Sources */,
 				79B778D82187EDE7003E01B3 /* main.m in Sources */,
 				79B7790421883099003E01B3 /* PKModel.m in Sources */,
@@ -466,7 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GM6C5S4FLT;
+				DEVELOPMENT_TEAM = B92D3BB89F;
 				GCC_PREFIX_HEADER = lianliankan/PrefixHeader.pch;
 				INFOPLIST_FILE = lianliankan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -474,9 +522,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lianliankan/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.luck.lianliankan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -486,7 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GM6C5S4FLT;
+				DEVELOPMENT_TEAM = B92D3BB89F;
 				GCC_PREFIX_HEADER = lianliankan/PrefixHeader.pch;
 				INFOPLIST_FILE = lianliankan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -494,9 +546,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lianliankan/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.luck.lianliankan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

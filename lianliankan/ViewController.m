@@ -10,7 +10,7 @@
 #import "MainGameViewController.h"
 #import "DiffViewController.h"
 #import "HRDUserTKViewController.h"
-#import "TestViewController.h"
+//#import "TestViewController.h"
 #import "AppDelegate.h"
 
 @interface ViewController ()
@@ -124,11 +124,11 @@
         make.bottom.mas_equalTo(-10);
     }];
     @weakify(self);
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"pushNotification" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-        @strongify(self);
-        [self pushNotification];
-    }];
-    [self pushNotification];
+//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"pushNotification" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        @strongify(self);
+//        [self pushNotification];
+//    }];
+//    [self pushNotification];
 }
 - (void)pushToGameMainViewControllerWithLevel:(NSInteger)level{
     DiffViewController *game =[[DiffViewController alloc]init];
@@ -143,6 +143,7 @@
         [self presentViewController:tk animated:animated completion:NULL];
     }
 }
+/*
 - (void)pushNotification{
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (app.push && app.url.length) {
@@ -158,6 +159,7 @@
         }
     }
 }
+ */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

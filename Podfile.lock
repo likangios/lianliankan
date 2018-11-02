@@ -14,7 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - AVOSCloud (11.4.0)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -45,7 +44,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - AVOSCloud
   - BlocksKit (~> 2.2.5)
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.1.0)
@@ -60,7 +58,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - AVOSCloud
     - BlocksKit
     - Masonry
     - MBProgressHUD
@@ -74,7 +71,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AVOSCloud: 1968612949f44d5a79c8ccdd550ca2107bbfde02
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -86,6 +82,6 @@ SPEC CHECKSUMS:
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 9dd5adcfbe298da38187151eb332db81613ae446
+PODFILE CHECKSUM: bfee451d7666a1a46c29baf679274d057a4152b1
 
 COCOAPODS: 1.5.3

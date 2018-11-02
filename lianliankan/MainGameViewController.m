@@ -240,7 +240,8 @@ dispatch_source_t timer;
             NSString *level = [NSString stringWithFormat:@"%d",self.gameLevel];
             [defau setObject:@(self.index + 1) forKey:level];
             [defau synchronize];
-            
+            //暂停计时器
+            [self YDD_cancelTimer];
             UIAlertController *alert= [UIAlertController alertControllerWithTitle:@"恭喜过关" message:nil preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *back = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self.navigationController popViewControllerAnimated:YES];
@@ -309,7 +310,7 @@ dispatch_source_t timer;
     ItemButton *endItem = nil;
     for (ItemButton *fItem in arr1) {
         for (ItemButton *sItem in arr2) {
-            if (fItem.model.y == sItem.model.y) {
+            if (fItem.model.y == sItem.model.y && fItem.model.x != sItem.model.x) {
                 NSMutableArray *array = [NSMutableArray array];
                 for (int x = MIN(fItem.model.x, sItem.model.x); x < MAX(fItem.model.x, sItem.model.x); x ++) {
                     ItemButton *centerItem = [self getItemButtonWithPoint_x:x Point_y:fItem.model.y];
@@ -344,7 +345,7 @@ b:{
     ItemButton *endItem = nil;
     for (ItemButton *fItem in arr1) {
         for (ItemButton *sItem in arr2) {
-            if (fItem.model.x == sItem.model.x) {
+            if (fItem.model.x == sItem.model.x && fItem.model.y != sItem.model.y) {
                 NSMutableArray *array = [NSMutableArray array];
                 for (int y = MIN(fItem.model.y, sItem.model.y); y < MAX(fItem.model.y, sItem.model.y); y ++) {
                     ItemButton *centerItem = [self getItemButtonWithPoint_x:fItem.model.x Point_y:y];
@@ -590,7 +591,7 @@ b:{
     return _refreshButton;
 }
 - (void)refreshAction{
-    
+    self.progressView.progress -= 0.15;
     NSMutableArray *types = [NSMutableArray array];
     NSMutableArray *numbers = [NSMutableArray array];
     NSMutableArray *buttonsArray = [NSMutableArray array];

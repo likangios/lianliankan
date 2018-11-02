@@ -10,7 +10,7 @@
 
 @interface LLKCardsCell ()
 
-@property(nonatomic,strong) UIImageView *guanka;
+@property(nonatomic,strong) UIImageView *lockImageView;
 
 @end
 @implementation LLKCardsCell
@@ -18,20 +18,26 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.layer.cornerRadius = 4;
+        self.layer.cornerRadius = 5;
+        self.layer.masksToBounds = YES;
         self.layer.borderWidth = 1.0;
         self.layer.shadowOpacity = 1;
         self.layer.shadowRadius = 0;
-        self.layer.shadowOffset = CGSizeMake(0, 10);
-        
+        self.layer.shadowOffset = CGSizeMake(-5, 5);
+        self.backgroundColor = [[UIColor colorWithHexString:@"000000"] colorWithAlphaComponent:0.75];
         
         [self.contentView addSubview:self.guankaLabel];
         [self.contentView addSubview:self.guanka];
-        
+        [self.contentView addSubview:self.lockImageView];
+
         [self.guankaLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self.contentView);
         }];
         [self.guanka mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self.contentView);
+            make.size.mas_equalTo(CGSizeMake(110 * 0.5, 153 * 0.5));
+        }];
+        [self.lockImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self.contentView);
             make.size.mas_equalTo(40);
         }];
@@ -39,21 +45,18 @@
     }
     return self;
 }
+- (UIImageView *)lockImageView{
+    if(!_lockImageView) {
+        _lockImageView = [UIImageView new];
+        _lockImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _lockImageView.image = [UIImage imageNamed:@"suo"];
+    }
+    return _lockImageView;
+}
 - (void)setIsLock:(BOOL)isLock{
     _isLock = isLock;
-    self.guanka.hidden = !_isLock;
+    self.lockImageView.hidden = !_isLock;
     self.guankaLabel.hidden = _isLock;
-    if (isLock) {
-        self.backgroundColor = [[UIColor colorWithHexString:@"cde0ce"] colorWithAlphaComponent:0.75];
-        self.layer.borderColor = [UIColor colorWithHexString:@"073774"].CGColor;
-        self.layer.shadowColor = [[UIColor colorWithHexString:@"a5a29b"] colorWithAlphaComponent:0.75].CGColor;
-    }
-    else{
-        
-        self.backgroundColor = [[UIColor colorWithHexString:@"cdebf3"] colorWithAlphaComponent:0.75];
-        self.layer.borderColor = [UIColor yellowColor].CGColor;
-        self.layer.shadowColor = [[UIColor colorWithHexString:@"194d59"] colorWithAlphaComponent:0.75].CGColor;
-    }
 }
 - (UILabel *)guankaLabel{
     if (!_guankaLabel) {
@@ -69,7 +72,6 @@
     if(!_guanka) {
         _guanka = [UIImageView new];
         _guanka.contentMode = UIViewContentModeScaleAspectFill;
-        _guanka.image = [UIImage imageNamed:@"suo"];
     }
     return _guanka;
 }

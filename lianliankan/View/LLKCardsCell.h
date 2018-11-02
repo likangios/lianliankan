@@ -10,6 +10,8 @@
 
 @interface LLKCardsCell : UICollectionViewCell
 
+@property(nonatomic,strong) UIImageView *guanka;
+
 @property(nonatomic,strong) UILabel *guankaLabel;
 
 @property(nonatomic,assign) BOOL isLock;

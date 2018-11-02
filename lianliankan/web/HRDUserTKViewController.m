@@ -30,7 +30,7 @@
         [_confirmButton setTitle:@"阅读并同意隐私政策" forState:UIControlStateNormal];
         [_confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _confirmButton.layer.cornerRadius = 20;
-        _confirmButton.backgroundColor = [UIColor purpleColor];
+        _confirmButton.backgroundColor = [UIColor randomColor];
     }
     return _confirmButton;
 }
@@ -59,10 +59,12 @@
         make.bottom.mas_equalTo(-40);
         make.size.mas_equalTo(CGSizeMake(200, 40));
     }];
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (app.yinsitiaokuanUrl.length) {
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:app.yinsitiaokuanUrl]]];
-    }
+//    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    if (app.yinsitiaokuanUrl.length) {
+//        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:app.yinsitiaokuanUrl]]];
+//    }
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/63a57cdf47c1"]]];
+
     [[self.confirmButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [SVProgressHUD dismiss];
         [self dismissViewControllerAnimated:YES completion:NULL];

@@ -28,7 +28,7 @@
 - (UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-        layout.itemSize = CGSizeMake(80,80);
+        layout.itemSize = CGSizeMake(110 * 0.5, 153 * 0.5);
         layout.minimumLineSpacing = 20.0;
         layout.minimumInteritemSpacing = 10.0;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -58,11 +58,12 @@
     return self;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 12;
+    return 13;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     LLKCardsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LLKCardsCell" forIndexPath:indexPath];
     cell.guankaLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
+    cell.guanka.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%ld",indexPath.row+1]];
     cell.isLock = YES;
     if (indexPath.row < self.currentIndex) {
         cell.isLock = NO;
