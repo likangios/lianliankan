@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793A25DD218FE90A00975C92 /* 启动页.png in Resources */ = {isa = PBXBuildFile; fileRef = 793A25DC218FE90A00975C92 /* 启动页.png */; };
 		79B778CA2187EDE5003E01B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778C92187EDE5003E01B3 /* AppDelegate.m */; };
 		79B778CD2187EDE5003E01B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778CC2187EDE5003E01B3 /* ViewController.m */; };
 		79B778D02187EDE5003E01B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B778CE2187EDE5003E01B3 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		0970EA0988FC4F6479C5506A /* Pods-lianliankan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lianliankan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lianliankan/Pods-lianliankan.debug.xcconfig"; sourceTree = "<group>"; };
 		0B0DDA4790C0E04DA4849F4B /* Pods-lianliankan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lianliankan.release.xcconfig"; path = "Pods/Target Support Files/Pods-lianliankan/Pods-lianliankan.release.xcconfig"; sourceTree = "<group>"; };
+		793A25DC218FE90A00975C92 /* 启动页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页.png"; sourceTree = "<group>"; };
 		79B778C52187EDE5003E01B3 /* lianliankan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lianliankan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B778C82187EDE5003E01B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		79B778C92187EDE5003E01B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				79B778DF2187F17E003E01B3 /* DiffViewController.m */,
 				79B778E12187F193003E01B3 /* MainGameViewController.h */,
 				79B778E22187F193003E01B3 /* MainGameViewController.m */,
+				793A25DC218FE90A00975C92 /* 启动页.png */,
 				79B778CE2187EDE5003E01B3 /* Main.storyboard */,
 				79B778D12187EDE7003E01B3 /* Assets.xcassets */,
 				79B778D32187EDE7003E01B3 /* LaunchScreen.storyboard */,
@@ -311,6 +314,7 @@
 			files = (
 				79B778D52187EDE7003E01B3 /* LaunchScreen.storyboard in Resources */,
 				79B778D22187EDE7003E01B3 /* Assets.xcassets in Resources */,
+				793A25DD218FE90A00975C92 /* 启动页.png in Resources */,
 				79B778D02187EDE5003E01B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
