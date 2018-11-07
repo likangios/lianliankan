@@ -18,16 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="启动页.png" translatesAutoresizingMaskIntoConstraints="NO" id="ETu-np-4nV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="VbD-j9-VOI">
+                                <rect key="frame" x="127.5" y="120" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="YlF-lY-6ea"/>
+                                    <constraint firstAttribute="width" constant="120" id="kRy-Pt-n5A"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扑克连连看" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVq-OY-pdW">
+                                <rect key="frame" x="124.5" y="260" width="127" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                <color key="textColor" red="0.8913073172" green="0.0" blue="0.723881102" alpha="0.4531517551" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ETu-np-4nV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0FU-7e-pCt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ETu-np-4nV" secondAttribute="bottom" id="Kne-Dd-ywf"/>
-                            <constraint firstItem="ETu-np-4nV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pfi-Qd-5Nl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ETu-np-4nV" secondAttribute="trailing" id="qiO-eS-9WL"/>
+                            <constraint firstItem="VbD-j9-VOI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UNm-OS-sGf"/>
+                            <constraint firstItem="VbD-j9-VOI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="bmA-JP-4dW"/>
+                            <constraint firstItem="HVq-OY-pdW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jhx-qp-e9u"/>
+                            <constraint firstItem="HVq-OY-pdW" firstAttribute="top" secondItem="VbD-j9-VOI" secondAttribute="bottom" constant="20" id="nkR-8d-PjM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="启动页.png" width="1080" height="1920"/>
+        <image name="launchIcon" width="16" height="16"/>
     </resources>
 </document>

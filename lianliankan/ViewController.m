@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "MainGameViewController.h"
-#import "DiffViewController.h"
-#import "HRDUserTKViewController.h"
+#import "MGPlayerViewController.h"
+#import "GuanKaViewController.h"
+#import "UserTKViewController.h"
 //#import "TestViewController.h"
 #import "AppDelegate.h"
 
@@ -27,12 +27,118 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
+/*
+ 一阶：20关：4关一组* 5组   
+ */
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [self creatSubViews];
+    UIScrollView * scrollView = [[UIScrollView alloc]init];
+    [self.view addSubview:scrollView];
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(0);
+        make.top.equalTo(self.zimuIconImageView.mas_bottom).offset(20);
+        make.bottom.mas_equalTo(-30);
+    }];
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    NSArray *titles = @[@"一 阶",@"二   阶",@"三 阶",@"四   阶"];
+    UIButton *lastBtn;
+    for (int i = 0; i< 4 ; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [scrollView addSubview:btn];
+        btn.tag = i + 1;
+        UIImage *image = [UIImage imageNamed:@"button1"];
+        [btn setImage:image forState:UIControlStateNormal];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view);
+            make.size.mas_equalTo(CGSizeMake(300, 75));
+            if (lastBtn) {
+                make.top.equalTo(lastBtn.mas_bottom).offset(20);
+            }
+            else{
+                make.top.mas_equalTo(0);
+            }
+        }];
+        UILabel *label = [UILabel new];
+        label.text = titles[i];
+        label.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+        label.font = [UIFont boldSystemFontOfSize:30];
+        label.textAlignment = NSTextAlignmentCenter;
+        [btn addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(btn);
+            make.centerY.equalTo(btn.mas_centerY).offset(-3);
+        }];
+        lastBtn = btn;
+        @weakify(self);
+        [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+            @strongify(self);
+            [self pushToGameMainViewControllerWithLevel:x.tag];
+        }];
+    }
+    [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-10);
+    }];
+}
+
+- (void)creatSubViews {
+    [self.view addSubview:self.bgImageView];
+    [self.view addSubview:self.topIconImageView];
+    [self.view addSubview:self.zimuIconImageView];
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    [self.topIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(10);
+        make.size.mas_equalTo(CGSizeMake(0, 0));
+        make.centerX.equalTo(self.view);
+    }];
+    [self.zimuIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.topIconImageView.mas_bottom).offset(20);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(80);
+    }];
+}
+
+- (void)pushToGameMainViewControllerWithLevel:(NSInteger)level{
+    GuanKaViewController *game =[[GuanKaViewController alloc]init];
+    game.gameLevel = level;
+    [self.navigationController pushViewController:game animated:YES];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSString *first =  [[NSUserDefaults standardUserDefaults] valueForKey:@"first"];
+    if (![first isEqualToString:@"1"]) {
+        UserTKViewController *tk = [[UserTKViewController alloc]init];
+        [self presentViewController:tk animated:animated completion:NULL];
+    }
+}
+/*
+- (void)pushNotification{
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (app.push && app.url.length) {
+        TestViewController *vc = [[TestViewController alloc]init];
+        vc.loadUrl = app.url;
+        if (self.presentedViewController && ![self.presentedViewController isKindOfClass:vc.class]) {
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self presentViewController:vc animated:YES completion:NULL];
+            }];
+        }
+        else{
+            [self presentViewController:vc animated:YES completion:NULL];
+        }
+    }
+}
+ */
 - (UIImageView *)zimuIconImageView{
     if(!_zimuIconImageView) {
         _zimuIconImageView = [UIImageView new];
         _zimuIconImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _zimuIconImageView.image = [UIImage imageNamed:@"logo_76x82_"];
-        
+        _zimuIconImageView.image = [UIImage imageNamed:@"_"];
+
     }
     return _zimuIconImageView;
 }
@@ -55,112 +161,6 @@
     }
     return _bgImageView;
 }
-/*
- 一阶：20关：4关一组* 5组   
- */
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.view addSubview:self.bgImageView];
-    [self.view addSubview:self.topIconImageView];
-    [self.view addSubview:self.zimuIconImageView];
-    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    [self.topIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
-        make.size.mas_equalTo(CGSizeMake(0, 0));
-        make.centerX.equalTo(self.view);
-    }];
-    [self.zimuIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topIconImageView.mas_bottom).offset(20);
-        make.centerX.equalTo(self.view);
-    }];
-    UIScrollView * scrollView = [[UIScrollView alloc]init];
-    [self.view addSubview:scrollView];
-    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.top.equalTo(self.zimuIconImageView.mas_bottom).offset(20);
-        make.bottom.mas_equalTo(-30);
-    }];
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.showsHorizontalScrollIndicator = NO;
-    NSArray *titles = @[@"一 阶",@"二   阶",@"三 阶",@"四   阶"];
-    UIButton *lastBtn;
-    for (int i = 0; i< 4 ; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [scrollView addSubview:btn];
-        btn.tag = i + 1;
-        UIImage *image = [UIImage imageNamed:@"icon_rectangle"];
-        [btn setImage:image forState:UIControlStateNormal];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view);
-            make.size.mas_equalTo(CGSizeMake(300, 75));
-            if (lastBtn) {
-                make.top.equalTo(lastBtn.mas_bottom).offset(20);
-            }
-            else{
-                make.top.mas_equalTo(0);
-            }
-        }];
-        UILabel *label = [UILabel new];
-        label.text = titles[i];
-        label.textColor = [[UIColor blackColor] colorWithAlphaComponent:1];
-        label.font = [UIFont boldSystemFontOfSize:30];
-        label.textAlignment = NSTextAlignmentCenter;
-        [btn addSubview:label];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(btn);
-            make.centerY.equalTo(btn.mas_centerY).offset(0);
-        }];
-        lastBtn = btn;
-        @weakify(self);
-        [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-            @strongify(self);
-            [self pushToGameMainViewControllerWithLevel:x.tag];
-        }];
-    }
-    [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-10);
-    }];
-    @weakify(self);
-//    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"pushNotification" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-//        @strongify(self);
-//        [self pushNotification];
-//    }];
-//    [self pushNotification];
-}
-- (void)pushToGameMainViewControllerWithLevel:(NSInteger)level{
-    DiffViewController *game =[[DiffViewController alloc]init];
-    game.gameLevel = level;
-    [self.navigationController pushViewController:game animated:YES];
-}
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    NSString *first =  [[NSUserDefaults standardUserDefaults] valueForKey:@"first"];
-    if (![first isEqualToString:@"1"]) {
-        HRDUserTKViewController *tk = [[HRDUserTKViewController alloc]init];
-        [self presentViewController:tk animated:animated completion:NULL];
-    }
-}
-/*
-- (void)pushNotification{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (app.push && app.url.length) {
-        TestViewController *vc = [[TestViewController alloc]init];
-        vc.loadUrl = app.url;
-        if (self.presentedViewController && ![self.presentedViewController isKindOfClass:vc.class]) {
-            [self dismissViewControllerAnimated:YES completion:^{
-                [self presentViewController:vc animated:YES completion:NULL];
-            }];
-        }
-        else{
-            [self presentViewController:vc animated:YES completion:NULL];
-        }
-    }
-}
- */
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

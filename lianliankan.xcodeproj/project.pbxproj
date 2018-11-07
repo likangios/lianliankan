@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79247E3F2192CF1600ECB10E /* launchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 79247E3E2192CF1600ECB10E /* launchIcon.png */; };
 		793A25DD218FE90A00975C92 /* 启动页.png in Resources */ = {isa = PBXBuildFile; fileRef = 793A25DC218FE90A00975C92 /* 启动页.png */; };
 		79B778CA2187EDE5003E01B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778C92187EDE5003E01B3 /* AppDelegate.m */; };
 		79B778CD2187EDE5003E01B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778CC2187EDE5003E01B3 /* ViewController.m */; };
@@ -14,15 +15,15 @@
 		79B778D22187EDE7003E01B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B778D12187EDE7003E01B3 /* Assets.xcassets */; };
 		79B778D52187EDE7003E01B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B778D32187EDE7003E01B3 /* LaunchScreen.storyboard */; };
 		79B778D82187EDE7003E01B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778D72187EDE7003E01B3 /* main.m */; };
-		79B778E02187F17E003E01B3 /* DiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778DF2187F17E003E01B3 /* DiffViewController.m */; };
-		79B778E32187F193003E01B3 /* MainGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778E22187F193003E01B3 /* MainGameViewController.m */; };
-		79B778F12187F4FE003E01B3 /* HRDUserTKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778EB2187F4FE003E01B3 /* HRDUserTKViewController.m */; };
-		79B778F42187FBED003E01B3 /* LLKCardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778F32187FBED003E01B3 /* LLKCardsView.m */; };
-		79B778F82187FD21003E01B3 /* LLKCardsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778F72187FD21003E01B3 /* LLKCardsCell.m */; };
+		79B778E02187F17E003E01B3 /* GuanKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778DF2187F17E003E01B3 /* GuanKaViewController.m */; };
+		79B778E32187F193003E01B3 /* MGPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778E22187F193003E01B3 /* MGPlayerViewController.m */; };
+		79B778F12187F4FE003E01B3 /* UserTKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778EB2187F4FE003E01B3 /* UserTKViewController.m */; };
+		79B778F42187FBED003E01B3 /* PKCardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778F32187FBED003E01B3 /* PKCardsView.m */; };
+		79B778F82187FD21003E01B3 /* PKCardsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778F72187FD21003E01B3 /* PKCardsCell.m */; };
 		79B778FC2188073E003E01B3 /* GQGesVCTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778FA2188073E003E01B3 /* GQGesVCTransition.m */; };
 		79B778FF218808FC003E01B3 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B778FE218808FC003E01B3 /* UIColor+expanded.m */; };
 		79B7790421883099003E01B3 /* PKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7790321883099003E01B3 /* PKModel.m */; };
-		79B7790721884BC6003E01B3 /* ItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7790621884BC6003E01B3 /* ItemButton.m */; };
+		79B7790721884BC6003E01B3 /* PKCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7790621884BC6003E01B3 /* PKCustomButton.m */; };
 		79E198DD218C218600658BE2 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198DC218C218600658BE2 /* libGDTMobSDK.a */; };
 		79E198DF218C21A900658BE2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198DE218C21A900658BE2 /* libxml2.tbd */; };
 		79E198E1218C21AF00658BE2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E198E0218C21AF00658BE2 /* AVFoundation.framework */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		0970EA0988FC4F6479C5506A /* Pods-lianliankan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lianliankan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lianliankan/Pods-lianliankan.debug.xcconfig"; sourceTree = "<group>"; };
 		0B0DDA4790C0E04DA4849F4B /* Pods-lianliankan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lianliankan.release.xcconfig"; path = "Pods/Target Support Files/Pods-lianliankan/Pods-lianliankan.release.xcconfig"; sourceTree = "<group>"; };
+		79247E3E2192CF1600ECB10E /* launchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchIcon.png; sourceTree = "<group>"; };
 		793A25DC218FE90A00975C92 /* 启动页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页.png"; sourceTree = "<group>"; };
 		79B778C52187EDE5003E01B3 /* lianliankan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lianliankan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B778C82187EDE5003E01B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,25 +53,25 @@
 		79B778D42187EDE7003E01B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79B778D62187EDE7003E01B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79B778D72187EDE7003E01B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		79B778DE2187F17E003E01B3 /* DiffViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiffViewController.h; sourceTree = "<group>"; };
-		79B778DF2187F17E003E01B3 /* DiffViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiffViewController.m; sourceTree = "<group>"; };
-		79B778E12187F193003E01B3 /* MainGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainGameViewController.h; sourceTree = "<group>"; };
-		79B778E22187F193003E01B3 /* MainGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainGameViewController.m; sourceTree = "<group>"; };
+		79B778DE2187F17E003E01B3 /* GuanKaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanKaViewController.h; sourceTree = "<group>"; };
+		79B778DF2187F17E003E01B3 /* GuanKaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanKaViewController.m; sourceTree = "<group>"; };
+		79B778E12187F193003E01B3 /* MGPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGPlayerViewController.h; sourceTree = "<group>"; };
+		79B778E22187F193003E01B3 /* MGPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGPlayerViewController.m; sourceTree = "<group>"; };
 		79B778E42187F3FB003E01B3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		79B778E72187F4FE003E01B3 /* HRDUserTKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDUserTKViewController.h; sourceTree = "<group>"; };
-		79B778EB2187F4FE003E01B3 /* HRDUserTKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDUserTKViewController.m; sourceTree = "<group>"; };
-		79B778F22187FBED003E01B3 /* LLKCardsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLKCardsView.h; sourceTree = "<group>"; };
-		79B778F32187FBED003E01B3 /* LLKCardsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLKCardsView.m; sourceTree = "<group>"; };
-		79B778F62187FD21003E01B3 /* LLKCardsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLKCardsCell.h; sourceTree = "<group>"; };
-		79B778F72187FD21003E01B3 /* LLKCardsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLKCardsCell.m; sourceTree = "<group>"; };
+		79B778E72187F4FE003E01B3 /* UserTKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTKViewController.h; sourceTree = "<group>"; };
+		79B778EB2187F4FE003E01B3 /* UserTKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTKViewController.m; sourceTree = "<group>"; };
+		79B778F22187FBED003E01B3 /* PKCardsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCardsView.h; sourceTree = "<group>"; };
+		79B778F32187FBED003E01B3 /* PKCardsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCardsView.m; sourceTree = "<group>"; };
+		79B778F62187FD21003E01B3 /* PKCardsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCardsCell.h; sourceTree = "<group>"; };
+		79B778F72187FD21003E01B3 /* PKCardsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCardsCell.m; sourceTree = "<group>"; };
 		79B778FA2188073E003E01B3 /* GQGesVCTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQGesVCTransition.m; sourceTree = "<group>"; };
 		79B778FB2188073E003E01B3 /* GQGesVCTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQGesVCTransition.h; sourceTree = "<group>"; };
 		79B778FD218808FC003E01B3 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
 		79B778FE218808FC003E01B3 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
 		79B7790221883099003E01B3 /* PKModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKModel.h; sourceTree = "<group>"; };
 		79B7790321883099003E01B3 /* PKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKModel.m; sourceTree = "<group>"; };
-		79B7790521884BC6003E01B3 /* ItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemButton.h; sourceTree = "<group>"; };
-		79B7790621884BC6003E01B3 /* ItemButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemButton.m; sourceTree = "<group>"; };
+		79B7790521884BC6003E01B3 /* PKCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKCustomButton.h; sourceTree = "<group>"; };
+		79B7790621884BC6003E01B3 /* PKCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKCustomButton.m; sourceTree = "<group>"; };
 		79E198D4218C218600658BE2 /* GDTNativeExpressAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdView.h; sourceTree = "<group>"; };
 		79E198D5218C218600658BE2 /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = "<group>"; };
 		79E198D6218C218600658BE2 /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = "<group>"; };
@@ -146,10 +148,11 @@
 				79B778C92187EDE5003E01B3 /* AppDelegate.m */,
 				79B778CB2187EDE5003E01B3 /* ViewController.h */,
 				79B778CC2187EDE5003E01B3 /* ViewController.m */,
-				79B778DE2187F17E003E01B3 /* DiffViewController.h */,
-				79B778DF2187F17E003E01B3 /* DiffViewController.m */,
-				79B778E12187F193003E01B3 /* MainGameViewController.h */,
-				79B778E22187F193003E01B3 /* MainGameViewController.m */,
+				79B778DE2187F17E003E01B3 /* GuanKaViewController.h */,
+				79B778DF2187F17E003E01B3 /* GuanKaViewController.m */,
+				79247E3E2192CF1600ECB10E /* launchIcon.png */,
+				79B778E12187F193003E01B3 /* MGPlayerViewController.h */,
+				79B778E22187F193003E01B3 /* MGPlayerViewController.m */,
 				793A25DC218FE90A00975C92 /* 启动页.png */,
 				79B778CE2187EDE5003E01B3 /* Main.storyboard */,
 				79B778D12187EDE7003E01B3 /* Assets.xcassets */,
@@ -164,8 +167,8 @@
 		79B778E52187F4FE003E01B3 /* web */ = {
 			isa = PBXGroup;
 			children = (
-				79B778E72187F4FE003E01B3 /* HRDUserTKViewController.h */,
-				79B778EB2187F4FE003E01B3 /* HRDUserTKViewController.m */,
+				79B778E72187F4FE003E01B3 /* UserTKViewController.h */,
+				79B778EB2187F4FE003E01B3 /* UserTKViewController.m */,
 			);
 			path = web;
 			sourceTree = "<group>";
@@ -173,12 +176,12 @@
 		79B778F52187FD05003E01B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				79B778F62187FD21003E01B3 /* LLKCardsCell.h */,
-				79B778F72187FD21003E01B3 /* LLKCardsCell.m */,
-				79B778F22187FBED003E01B3 /* LLKCardsView.h */,
-				79B778F32187FBED003E01B3 /* LLKCardsView.m */,
-				79B7790521884BC6003E01B3 /* ItemButton.h */,
-				79B7790621884BC6003E01B3 /* ItemButton.m */,
+				79B778F62187FD21003E01B3 /* PKCardsCell.h */,
+				79B778F72187FD21003E01B3 /* PKCardsCell.m */,
+				79B778F22187FBED003E01B3 /* PKCardsView.h */,
+				79B778F32187FBED003E01B3 /* PKCardsView.m */,
+				79B7790521884BC6003E01B3 /* PKCustomButton.h */,
+				79B7790621884BC6003E01B3 /* PKCustomButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79B778D52187EDE7003E01B3 /* LaunchScreen.storyboard in Resources */,
+				79247E3F2192CF1600ECB10E /* launchIcon.png in Resources */,
 				79B778D22187EDE7003E01B3 /* Assets.xcassets in Resources */,
 				793A25DD218FE90A00975C92 /* 启动页.png in Resources */,
 				79B778D02187EDE5003E01B3 /* Main.storyboard in Resources */,
@@ -365,18 +369,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79B778F42187FBED003E01B3 /* LLKCardsView.m in Sources */,
+				79B778F42187FBED003E01B3 /* PKCardsView.m in Sources */,
 				79B778CD2187EDE5003E01B3 /* ViewController.m in Sources */,
 				79B778D82187EDE7003E01B3 /* main.m in Sources */,
 				79B7790421883099003E01B3 /* PKModel.m in Sources */,
 				79B778FF218808FC003E01B3 /* UIColor+expanded.m in Sources */,
-				79B778F12187F4FE003E01B3 /* HRDUserTKViewController.m in Sources */,
-				79B778F82187FD21003E01B3 /* LLKCardsCell.m in Sources */,
+				79B778F12187F4FE003E01B3 /* UserTKViewController.m in Sources */,
+				79B778F82187FD21003E01B3 /* PKCardsCell.m in Sources */,
 				79B778CA2187EDE5003E01B3 /* AppDelegate.m in Sources */,
 				79B778FC2188073E003E01B3 /* GQGesVCTransition.m in Sources */,
-				79B778E32187F193003E01B3 /* MainGameViewController.m in Sources */,
-				79B7790721884BC6003E01B3 /* ItemButton.m in Sources */,
-				79B778E02187F17E003E01B3 /* DiffViewController.m in Sources */,
+				79B778E32187F193003E01B3 /* MGPlayerViewController.m in Sources */,
+				79B7790721884BC6003E01B3 /* PKCustomButton.m in Sources */,
+				79B778E02187F17E003E01B3 /* GuanKaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +534,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lianliankan/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.luck.lianliankan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.game.pukellk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -554,7 +558,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lianliankan/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.luck.lianliankan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.game.pukellk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
