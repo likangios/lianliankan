@@ -27,10 +27,10 @@
 - (UIButton *)confirmButton{
     if (!_confirmButton) {
         _confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_confirmButton setTitle:@"阅读并同意隐私政策" forState:UIControlStateNormal];
-        [_confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _confirmButton.layer.cornerRadius = 20;
-        _confirmButton.backgroundColor = [UIColor randomColor];
+        [_confirmButton setTitle:@"我同意" forState:UIControlStateNormal];
+        [_confirmButton setTitleColor:[UIColor colorWithHexString:@"ffffff"] forState:UIControlStateNormal];
+        _confirmButton.layer.cornerRadius = 4;
+        _confirmButton.backgroundColor = [UIColor colorWithHexString:@"181713"];
     }
     return _confirmButton;
 }

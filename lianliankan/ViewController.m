@@ -83,7 +83,6 @@
         make.bottom.mas_equalTo(-10);
     }];
 }
-
 - (void)creatSubViews {
     [self.view addSubview:self.bgImageView];
     [self.view addSubview:self.topIconImageView];
@@ -102,7 +101,6 @@
         make.size.mas_equalTo(80);
     }];
 }
-
 - (void)pushToGameMainViewControllerWithLevel:(NSInteger)level{
     GuanKaViewController *game =[[GuanKaViewController alloc]init];
     game.gameLevel = level;
@@ -116,23 +114,6 @@
         [self presentViewController:tk animated:animated completion:NULL];
     }
 }
-/*
-- (void)pushNotification{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (app.push && app.url.length) {
-        TestViewController *vc = [[TestViewController alloc]init];
-        vc.loadUrl = app.url;
-        if (self.presentedViewController && ![self.presentedViewController isKindOfClass:vc.class]) {
-            [self dismissViewControllerAnimated:YES completion:^{
-                [self presentViewController:vc animated:YES completion:NULL];
-            }];
-        }
-        else{
-            [self presentViewController:vc animated:YES completion:NULL];
-        }
-    }
-}
- */
 - (UIImageView *)zimuIconImageView{
     if(!_zimuIconImageView) {
         _zimuIconImageView = [UIImageView new];
