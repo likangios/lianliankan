@@ -9,7 +9,7 @@
 #import "UserTKViewController.h"
 #import <WebKit/WebKit.h>
 #import "AppDelegate.h"
-
+#import <AFNetworking.h>
 @interface UserTKViewController ()<WKNavigationDelegate,UIScrollViewDelegate>
 
 @property(nonatomic,strong) WKWebView *webView;
@@ -19,6 +19,7 @@
 @property(nonatomic,assign) BOOL hasHiddenRecommond;
 
 @property(nonatomic,assign) BOOL hasHiddenPay;
+
 
 @end
 
@@ -63,15 +64,41 @@
 //    if (app.yinsitiaokuanUrl.length) {
 //        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:app.yinsitiaokuanUrl]]];
 //    }
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/63a57cdf47c1"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/d6f7a449162f"]]];
 
     [[self.confirmButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [SVProgressHUD dismiss];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }];
+    
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                 [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/d6f7a449162f"]]];
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                 [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/d6f7a449162f"]]];
+                break;
+            default:
+                break;
+        }
+    }];
+    [manager startMonitoring];
+    
 }
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
+    self.webView.alpha = 0;
     [SVProgressHUD show];
+}
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
     //顶部 下载APP
@@ -93,7 +120,13 @@
     [webView evaluateJavaScript:@"document.getElementsByClassName('open-app-btn')[0].style.display = 'none'" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
         
     }];
+    //顶部 作者信息
+    [webView evaluateJavaScript:@"document.getElementsByClassName('article-info')[0].style.display = 'none'" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+        
+    }];
+    
     [SVProgressHUD dismiss];
+    self.webView.alpha = 1;
 
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
@@ -112,7 +145,10 @@
                 self.hasHiddenPay = YES;
             }
         }];
+        [self.webView evaluateJavaScript:@"document.getElementsByClassName('ad')[0].style.display = 'none'" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+        }];
     }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

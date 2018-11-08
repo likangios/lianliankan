@@ -28,7 +28,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扑克连连看" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVq-OY-pdW">
                                 <rect key="frame" x="124.5" y="260" width="127" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
-                                <color key="textColor" red="0.8913073172" green="0.0" blue="0.723881102" alpha="0.4531517551" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.2649508248730964" green="0.17827177398442115" blue="0.057570253491309564" alpha="0.4531517551" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

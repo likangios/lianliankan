@@ -8,10 +8,6 @@
 
 #import "AppDelegate.h"
 #import "GDTSplashAd.h"
-
-//#import <AVOSCloud/AVOSCloud.h>
-//#import "HRDCTManager.h"
-
 @interface AppDelegate ()<GDTSplashAdDelegate>
 
 @end
@@ -24,6 +20,7 @@
 //    splash.delegate = self;
 //    splash.fetchDelay = 3;
 //    [splash loadAdAndShowInWindow:self.window];
+    self.window.backgroundColor =[UIColor whiteColor];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [SVProgressHUD setMinimumDismissTimeInterval:1];
     [self Helloworld];
