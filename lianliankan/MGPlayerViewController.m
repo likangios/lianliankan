@@ -435,7 +435,7 @@ b:{
         [item removeFromSuperview];
     }
     NSInteger count = [self getMapCount];
-    CGSize buttonSize = CGSizeMake(CGRectGetWidth(self.containView.frame)/(count - 1), CGRectGetWidth(self.containView.frame)/(count - 1)*153/110);
+    CGSize buttonSize = CGSizeMake(CGRectGetWidth(self.containView.frame)/(count - 1), CGRectGetWidth(self.containView.frame)/(count - 1));
     for (int i= 0; i< count; i++) {
         for (int j= 0; j< count; j++) {
             PKCustomButton *item = [PKCustomButton buttonWithType:UIButtonTypeCustom];
